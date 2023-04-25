@@ -9,7 +9,7 @@ resource "aws_instance" "production-server" {
  }
  provisioner "remote-exec" {
  inline = [
-     "ansible-playbook bankdeployplaybook.yml"
+     "ansible-playbook playbook.yml"
      ]
      }
      }
