@@ -56,41 +56,45 @@ environment {
 }
 	     stage('Terraform init'){
         steps {
+         dir('test-server'){
             sh 'terraform init'
               }
-
+	}
      }    
 	  
 	  stage('Terraform fmt'){
         steps {
+	dir('test-server'){
             sh 'terraform fmt'
               }
-
+	}
      }    
-
 
       stage('Terraform validate'){
         steps {
+		dir('test-server'){
             sh 'terraform validate'
-
+		}
               }
 
      }
 
             stage('Terraform plan'){
         steps {
+		dir('test-server'){
             sh 'terraform plan'
               }
-
+	}
      }
 
      stage('Terraform apply'){
         steps {
+		dir('test-server'){
             sh 'terraform apply -auto-approve'
 		sleep 10
               } 
 	   }
-	  
+     }
      stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
             steps {
                 dir('test-server'){
