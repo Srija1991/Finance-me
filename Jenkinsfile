@@ -98,7 +98,7 @@ environment {
      stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
             steps {
                 dir('test-server'){
-                sh 'sudo chmod 600 dec29.ppk'
+                sh 'sudo chmod 777 dec29.ppk'
                 sh 'terraform init'
                 sh 'terraform validate'
                 sh 'terraform apply --auto-approve'
