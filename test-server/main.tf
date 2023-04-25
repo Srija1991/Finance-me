@@ -6,7 +6,7 @@
   connection {
     type     = "ssh"
     user     = "ubuntu"
-    private_key = file("./dec29.ppk")
+    private_key = file("./dec29")
     host     = self.public_ip
   }
   provisioner "remote-exec" {
