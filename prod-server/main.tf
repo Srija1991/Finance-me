@@ -1,4 +1,4 @@
-  resource "aws_instance" "test-server" {
+  resource "aws_instance" "prod-server" {
   ami           = "ami-02eb7a4783e7e9317" 
   instance_type = "t2.micro" 
   key_name = "apr26"
@@ -13,12 +13,12 @@
     inline = [ "echo 'wait to start instance' "]
   }
   tags = {
-    Name = "test-server"
+    Name = "prod-server"
   }
   provisioner "local-exec" {
-        command = " echo ${aws_instance.test-server.public_ip} > inventory "
+        command = " echo ${aws_instance.prod-server.public_ip} > inventory "
   }
    provisioner "local-exec" {
-  command = "ansible-playbook /var/lib/jenkins/workspace/Finance-me/test-server/finance-playbook.yml "
+  command = "ansible-playbook /var/lib/jenkins/workspace/Finance-me/prod-server/finance-playbook.yml "
   } 
 }
