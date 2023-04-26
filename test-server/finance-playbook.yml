@@ -5,12 +5,8 @@
   tasks : 
   - name: Updating apt
     command : sudo apt update
-
-  - name: Install Python and PIP
-    command: sudo apt install -y python-pip
-
   - name : Install Docker
-    command : sudo apt install docker -y
+    command : sudo apt install docker.io -y
 
   - name : Start Docker Service
     command : sudo systemctl start docker
