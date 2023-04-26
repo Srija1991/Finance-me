@@ -3,9 +3,6 @@
   become: true
   connection : ssh
   tasks : 
-  - name: Updating apt
-    command : sudo apt update
-  
   - name : Install Docker
     command : sudo apt install docker.io -y
   
