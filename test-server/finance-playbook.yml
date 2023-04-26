@@ -4,20 +4,20 @@
     become: true
     connection : ssh
     tasks : 
-  - name: updating apt
-    command : sudo apt-get update
+    - name: updating apt
+      command : sudo apt-get update
     
-  - name: Install Python and PIP
-    command: sudo apt install -y python3-pip
+    - name: Install Python and PIP
+      command: sudo apt install -y python3-pip
    
-  - name: Install Docker
-    become: true
-    command: sudo apt-get install docker-ce docker-ce-cli containerd.io
+    - name: Install Docker
+      become: true
+      command: sudo apt-get install docker-ce docker-ce-cli containerd.io
        
-  - name : Start Docker Service
-    command : sudo systemctl start docker
-    become : yes
-    become_user : root
+    - name : Start Docker Service
+      command : sudo systemctl start docker
+      become : yes
+      become_user : root
 
-  - name: Deploy Docker Container
-    command: docker run -itd -p 8085:8081 srija1991/financeme
+    - name: Deploy Docker Container
+      command: docker run -itd -p 8085:8081 srija1991/financeme
