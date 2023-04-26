@@ -41,16 +41,16 @@
         name: docker-ce
         state: present
 
-   - name: Add current user to docker group
-     user:
+  - name: Add current user to docker group
+    user:
         name: "{{ ansible_user }}"
         append: yes
         groups: docker
         
-   - name : Start Docker Service
-     command : sudo systemctl start docker
-     become : yes
-     become_user : root
+  - name : Start Docker Service
+    command : sudo systemctl start docker
+    become : yes
+    become_user : root
 
-   - name: Deploy Docker Container
-     command: docker run -itd -p 8085:8081 srija1991/financeme
+  - name: Deploy Docker Container
+    command: docker run -itd -p 8085:8081 srija1991/financeme
