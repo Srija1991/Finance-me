@@ -24,19 +24,19 @@
           - curl
           - gnupg
           - software-properties-common
-        state: present
+    state: present
 
-   - name: Add Docker GPG key
+  - name: Add Docker GPG key
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
 
-   - name: Add Docker APT repository
+  - name: Add Docker APT repository
       apt_repository:
         repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
         state: present
 
-   - name: Install Docker
+  - name: Install Docker
       apt:
         name: docker-ce
         state: present
