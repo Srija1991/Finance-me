@@ -5,10 +5,6 @@ pipeline {
       maven 'maven'
       terraform 'terraform'
         }
-  environment {
-        AWS_ACCESS_KEY_ID = '${Access_Key}'
-        AWS_SECRET_KEY = '${Secret_Key}'
-        }
   stages {
      stage('checkout'){
        steps {
@@ -52,7 +48,7 @@ pipeline {
      stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
             steps {
                 dir('test-server'){
-                sh 'sudo chmod 777 dec29.ppk'
+                sh 'sudo chmod 777 apr26.pem'
                 sh 'terraform init'
                 sh 'terraform validate'
                 sh 'terraform apply --auto-approve'
