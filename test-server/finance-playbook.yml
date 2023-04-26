@@ -2,7 +2,6 @@
 - name : Configure Docker on test-server Instances
   hosts : all
   become: true
-  connection : ssh
   tasks : 
   - name: Update apt
     command: sudo apt update
