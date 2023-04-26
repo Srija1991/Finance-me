@@ -1,0 +1,19 @@
+- name : Configure Docker on test-server Instances
+  hosts : all
+  become: true
+  connection : ssh
+  tasks : 
+  - name: Updating apt
+    command : sudo apt update
+
+  - name: Install Python and PIP
+    command: sudo apt install -y python-pip
+
+  - name : Install Docker
+    command : sudo apt install docker -y
+
+  - name : Start Docker Service
+    command : sudo systemctl start docker
+
+  - name : Run the Bank application
+    command: sudo docker run -itd -p 8085:8081 srija1991/financeme
