@@ -8,16 +8,49 @@
     
   - name: Install Python and PIP
     command: sudo apt install -y python3-pip
-    
-  - name : Install Docker
-    command : sudo apt install -y docker.io
-    become : yes
-    become_user : root
+   
+  - name: Install Docker
+    become: true
 
-  - name : Start Docker Service
-    command : sudo systemctl start docker
-    become : yes
-    become_user : root
+  - name: Update apt cache
+    apt:
+     update_cache: yes
 
-  - name: Deploy Docker Container
-    command: docker run -itd -p 8085:8081 srija1991/financeme
+  - name: Install dependencies
+    apt:
+     name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - software-properties-common
+        state: present
+
+   - name: Add Docker GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+   - name: Add Docker APT repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+        state: present
+
+   - name: Install Docker
+      apt:
+        name: docker-ce
+        state: present
+
+   - name: Add current user to docker group
+      user:
+        name: "{{ ansible_user }}"
+        append: yes
+        groups: docker
+        
+   - name : Start Docker Service
+      command : sudo systemctl start docker
+      become : yes
+      become_user : root
+
+   - name: Deploy Docker Container
+      command: docker run -itd -p 8085:8081 srija1991/financeme
