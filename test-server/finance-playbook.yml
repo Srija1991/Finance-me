@@ -4,11 +4,11 @@
   become: true
   connection : ssh
   tasks : 
-  - name: Install apt-get
-    command: sudo apt-get install
+  - name: Update apt
+    command: sudo apt update
 
   - name : Install Docker
-    command : sudo apt-get -y install docker.io
+    command : sudo apt install docker
   
   - name : Start Docker Service
     command : sudo systemctl start docker
