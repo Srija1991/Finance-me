@@ -4,13 +4,13 @@
     connection : ssh
     tasks : 
     - name: updating apt
-      command : apt-get update
+      command : sudo apt-get update
     
     - name: Install Python and PIP
-      command: apt install -y python3-pip
+      command: sudo apt install -y python3-pip
    
     - name: Install Docker
-      command: apt-get install docker.io -y
+      command: sudo apt-get install docker.io -y
        
     - name : Start Docker Service
       command : systemctl start docker
