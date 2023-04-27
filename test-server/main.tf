@@ -19,6 +19,6 @@
     command = " echo ${aws_instance.test-server.public_ip} > inventory "
   }
   provisioner "local-exec" {
-    command = "ansible-playbook /var/lib/jenkins/workspace/Finance-me-proj/test-server/playbook.yml"
+    command = "ansible-playbook /var/lib/jenkins/workspace/Finance-me/test-server/playbook.yml"
   } 
 }
