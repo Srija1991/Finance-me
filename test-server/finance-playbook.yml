@@ -4,7 +4,7 @@
     connection : ssh
     tasks : 
     - name: updating apt
-      command : sudo apt-get update
+      command : apt-get update
     
     - name: Install Python and PIP
       command: sudo apt install -y python3-pip
