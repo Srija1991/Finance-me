@@ -7,7 +7,7 @@
     - name: Install Python
       command: sudo apt-get install python3-pip -y 
     - name: Install Docker
-      command: sudo apt install -y docker.io
+      command: sudo apt-get install -y docker.io
       become: yes
       become_user: root           
     - name: Start Docker Service
