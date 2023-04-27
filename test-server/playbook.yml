@@ -1,4 +1,5 @@
-  - name : Configure Docker on EC2 Instances
+---
+- name : Configure Docker on EC2 Instances
     hosts: all
     become: true
     connection : ssh
@@ -9,8 +10,8 @@
       command: sudo apt install -y docker.io
       become: yes
       become_user: root           
-    - name : Start Docker Service
-      command : sudo systemctl start docker
+    - name: Start Docker Service
+      command: sudo systemctl start docker
       become: yes
       become_user: root      
     - name: Deploy Docker Container
