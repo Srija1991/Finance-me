@@ -26,7 +26,7 @@ pipeline {
             }
      stage('Docker Image Creation'){
                steps {
-                      sh 'sudo docker build -t srija1991/financeme .'
+                      sh 'docker build -t srija1991/financeme .'
                       }
                    }
 
