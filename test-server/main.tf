@@ -3,18 +3,20 @@
   instance_type = "t2.micro" 
   key_name = "apr26"
   vpc_security_group_ids= ["sg-0c69f259b0ea97dc0"]
+  tags = {
+    Name = "test-server"
+  }
+  
+  provisioner "local-exec" {
+    command = "sleep 60 && echo 'Instance ready'"
+  }
   connection {
     type     = "ssh"
     user     = "ubuntu"
     private_key = file("./apr26.pem")
     host     = self.public_ip
   }
-  provisioner "remote-exec" {
-    inline = [ "echo 'wait to start instance' "]
-  }
-  tags = {
-    Name = "test-server"
-  }
+
   provisioner "local-exec" {
     command = " echo ${aws_instance.test-server.public_ip} > inventory "
   }
